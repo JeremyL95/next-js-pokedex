@@ -4,10 +4,10 @@ import { usePokemonData } from './usePokemonData'
 const GlobalContext = React.createContext();
 
 export function GlobalContextProvider({ children }) {
-    const { loading, fetchPokemon, pokemonList, pokemonListDetails } = usePokemonData();
+    const { loading, fetchPokemon, pokemonList, pokemonListDetails, fetchPokemonByName, activePokemon } = usePokemonData();
 
     return (
-        <GlobalContext.Provider value={{ loading, fetchPokemon, pokemonList, pokemonListDetails }}>
+        <GlobalContext.Provider value={{ loading, fetchPokemon, pokemonList, pokemonListDetails, fetchPokemonByName, activePokemon }}>
             {children}
         </GlobalContext.Provider>
     )

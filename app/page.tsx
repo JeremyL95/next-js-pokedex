@@ -1,7 +1,7 @@
 "use client";
-import Image from "next/image";
 import Header from '@/components/Header';
 import { useGlobalContext } from '@/context/globalContext';
+import PokemonCard from '@/components/PokemonCard'
 // nextjs, tailwind CSS, typescript, pokeAPI, prisma, auth0
 
 export default function Home() {
@@ -10,7 +10,7 @@ export default function Home() {
   if (loading) return <div>Loading ...</div>
 
   return (
-    <main>
+    <main className="max-w-[1400px] mx-auto">
       <Header />
 
       <section>
@@ -18,19 +18,10 @@ export default function Home() {
       </section>
 
       <section className="min-h-[90dvh]">
-        <ul className="grid gap-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+        <ul className="grid gap-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 p-5">
           {!loading && pokemonListDetails.map((pokemonListDetail: any, index: number) => {
-            console.log(pokemonListDetail)
-            return (
-              <li key={pokemonListDetail.id}>
-                <h4>
-                  {pokemonListDetail['id'].toString().padStart(3, "0")}
-                </h4>
-                <h2 className="">
-                  {pokemonListDetail.species.name}
-                </h2>
-              </li>
-            )
+            // console.log(pokemonListDetail)
+            return <PokemonCard key={index} pokemon={pokemonListDetail} />
           })}
 
         </ul>
